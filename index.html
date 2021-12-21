@@ -1,10 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Luyện tập tạo và sử dụng hàm 01</title>
 </head>
 <body>
-$END$
+<div><strong>Bài 1</strong>
+    <p>Tạo hàm alertMessage() hiển thị hộp thoại chứa chuỗi "Xin chao".
+        Gọi hàm từ trong phần &lt;body&gt; của trang web.</p>
+    <input type="button" value="Run" onclick="alertMessage()">
+    <hr>
+</div>
+<div><strong>Bài 2</strong>
+    <p>Tạo hàm nhận vào một đối số dạng số, tăng giá trị đối số đó lên 1 và <br>
+        trả lại giá trị cho lời gọi hàm. Gọi hàm từ trong phần &lt;body&gt; của trang web<br>
+        và hiển thị kết quả lên màn hình.
+    </p>
+    <input type="button" value="Run" onclick="bai2()">
+    <p id="result2"></p>
+    <hr>
+</div>
+
+<div><strong>Bài 3</strong>
+    <p> Tạo hàm nhận vào hai tham số. Nếu giá trị của tham số thứ nhất lớn hơn tham số thứ <br>
+        hai, hiển thị hộp thoại thông báo cho người dùng. Nếu giá trị của tham số thứ nhất <br>
+        nhỏ hơn hoặc bằng tham số thứ hai, trả về tổng của hai tham số.
+    </p>
+    <input type="button" value="Run" onclick="bai3()">
+    <p id="result3"></p>
+    <hr>
+</div>
+
+<div>
+    <strong>Bài 4</strong>
+    <p>Thêm các hàm alert() vào những vị trí thích hợp trong đoạn mã sau để bạn có thể nhìn <br>
+        thấy giá trị của biến result trước và sau lời gọi hàm.</p>
+    <table>
+        <tr>
+            <td>Trước khi sửa</td>
+            <td></td>
+            <td>Sau khi sửa</td>
+        </tr>
+        <tr>
+            <td>
+            <pre>
+function addNumbers() {
+    firstNum = 4;
+    secondNum = 8;
+    result = firstNum + secondNum;
+    return result;
+}
+result = 0;
+result = addNumbers();</pre>
+            </td>
+            <td>
+            <pre>
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    |   </pre>
+            </td>
+            <td>
+            <pre>
+function addNumbers() {
+    firstNum = 4;
+    secondNum = 8;
+    result = firstNum + secondNum;
+    alert('Biến result trong khi chạy hàm: ' + result);
+    return result;
+}
+result = 0;
+alert('Biến result trước khi gọi hàm: ' + result);
+result = addNumbers();
+alert('Biến result sau khi gọi hàm: ' + result);
+//Biến result đã bị thay đổi giá trị</pre>
+            </td>
+        </tr>
+    </table>
+    <input type="button" value="Run" onclick="bai4()">
+    <hr>
+</div>
+<div>
+    <strong>Bài 5</strong>
+    <p>Tạo một mảng với bảy phần tử dạng chuỗi có giá trị là tên các ngôi sao sau: Polaris, Aldebaran, Deneb, Vega, Altair, Dubhe và Regulus.
+        Tạo một mảng khác với bảy phần tử dạng chuỗi có giá trị là tên các chòm sao tương ứng chứa các ngôi sao: Ursa Minor, Tarurus, Cygnus,
+        Lyra, Aquila, Ursa Major và Leo. Tiếp theo, tạo một hàm nhận vào một tham số dạng chuỗi duy nhất. Trong hàm này, duyệt qua mảng thứ nhất
+        để tìm tên ngôi sao. Nếu tìm thấy, trả lại giá trị tương ứng với chỉ số đó ở mảng thứ hai. Nói cách khác, trả lại tên chòm sao của ngôi
+        sao đó. Trong phần &lt;body&gt; của trang web, dùng hộp thoại prompt để người dùng nhập vào tên của ngôi sao, sau đó gọi hàm với thông tin
+        đầu vào. Đừng quên xử lý trong trường hợp không tìm thấy ngôi sao nào. Cho kết quả hiển thị trên màn hình.
+    </p>
+    <input type="button" value="Run" onclick="bai5()">
+    <p id="result5"></p>
+
+</div>
+
+<script>
+    function alertMessage() {   // >>>>> bai 1
+        alert('Xin chào');
+    }                           // bai1 <<<<<
+
+    function bai2() {   // >>>>> bai 2
+        let number = parseFloat(prompt("Nhập vào một số:"));
+        let result = bai2Process(number);
+        let message = 'Số nhập vào: ' + number + '. Kết quả: ' + result + '.';
+        document.getElementById('result2').innerHTML = message;
+
+        function bai2Process(number) {
+            number++;
+            return number;
+        }
+    } // bai2 <<<<<
+
+    function bai3() {
+        let number1 = parseFloat(prompt("Nhập vào một số:"));
+        let number2 = parseFloat(prompt("Nhập vào số thứ hai:"));
+        let message = 'Số thứ nhất: ' + number1 + '<br>';
+        message += 'Số thứ hai: ' + number2 + '<br>';
+        message += isGreater(number1, number2) ? 'Số thứ nhất lớn hơn số thứ hai'
+            : 'Số thứ nhất bé hơn hoặc bằng số thứ hai';
+        document.getElementById('result3').innerHTML = message;
+
+        function isGreater(first, second) {
+            return first > second;
+        }
+    }
+
+    function bai4() {
+        function addNumbers() {
+            firstNum = 4;
+            secondNum = 8;
+            result = firstNum + secondNum;
+            alert('Biến result trong khi chạy hàm: ' + result);
+            return result;
+        }
+
+        let result = 0;
+        alert('Biến result trước khi gọi hàm: ' + result);
+        result = addNumbers();
+        alert('Biến result sau khi gọi hàm: ' + result);
+    }
+
+    function bai5(){
+        let starsArray = ['Polaris', 'Aldebaran', 'Deneb', 'Vega', 'Altair', 'Dubhe', 'Regulus'];
+        let constellationsArray = ['Ursa Minor', 'Tarurus', 'Cygnus', 'Lyra', 'Aquila', 'Ursa Major', 'Leo'];
+
+        let star = prompt('Nhập tên ngôi sao: ');
+        let message = 'Tên ngôi sao: '+ star + '<br>';
+        message += 'Thuộc chòm sao: ' + constellationOf(star);
+        document.getElementById('result5').innerHTML = message;
+
+
+        function constellationOf(star){
+            let index = starsArray.indexOf(star);
+            if ( index === -1){
+                return 'Không tìm thấy';
+            } else {
+                return constellationsArray[index];
+            }
+        }
+
+    }
+
+
+</script>
 </body>
 </html>
